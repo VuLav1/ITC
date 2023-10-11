@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- <script src="./ltpmc/demo.js"></script> -->
+</head>
+
+<body>
+    <form action="" id="form">
+        <h1>Please contract me</h1>
+        <div>
+            <label for="name">Name</label><br>
+            <input id="ten">
+        </div>
+        <div>
+            <label for="email">Email</label><br>
+            <input id="email">
+        </div>
+        <div>
+            <label for="message">Message</label><br>
+            <textarea id="message"></textarea>
+        </div>
+        <div id="buttons-row">
+            <div class="buttons">
+                <button type="submit" id="send">Send</button>
+            </div>
+            <div class="buttons">
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        const sendButton = document.getElementById('send')
+        const resetButton = document.getElementById('reset')
+        const form = document.getElementById('form')
+
+        const ten = document.getElementById('ten')
+        const email = document.getElementById('email')
+        const thongdiep = document.getElementById('message')
+
+        function reload() {
+            ten.value = localStorage.getItem('name')
+            email.value = localStorage.getItem('email')
+            thongdiep.value = localStorage.getItem('messge')
+        }
+        reload()
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+        })
+
+        resetButton.addEventListener('click', function () {
+            ten.value = ''
+            email.value = ''
+            thongdiep.value = ''
+        })
+
+        sendButton.addEventListener('click', function () {
+            alert('send')
+            localStorage.setItem('ten', ten.value)
+            localStorage.setItem('email', email.value)
+            localStorage.setItem('message', thongdiep.value)
+        })
+    </script>
+</body>
+
+</html>

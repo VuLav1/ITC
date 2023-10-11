@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        sinhvien {
+            background-color: aqua;
+        }
+    </style>
+    <script src="maychu.js"></script>
+</head>
+<h1>Hello</h1>
+<body>
+    <script>
+        // var sinhvien = {
+        //     "tensv": "SJC",
+        //     "tuoi": 19,
+        //     "email": "anhvuppe25@gmail.com"
+        // }
+        // document.write(sinhvien.email)
+        // console.log(sinhvien.tensv)
+
+        // var sinhvien2 = 'co 1 cai day'
+        // console.log(sinhvien2)
+        // var hoc = '{"tensv": "SJC","tuoi": 19,"email": "anhvuppe25@gmail.com"}';
+        // var sinhvien = JSON.parse(hoc);
+        // console.log(sinhvien.tensv)
+        // var danhsach = [
+        //     { "tensv": "SJC" },
+        //     { "tuoi": 19 },
+        //     { "email": "anhvuppe25@gmail.com" }
+        // ];
+        // console.log(danhsach[1])
+        // var danhsach2 = {
+        //     "danhsachsv": [
+        //         { "tensv": "SJC" },
+        //         { "tuoi": 19 },
+        //         { "email": "anhvuppe25@gmail.com" }
+        //     ]
+        // }
+        // console.log(danhsach2.danhsachsv[2])
+        var congty = [
+            {
+                "tochuc": [
+                    {
+                        "ten": "vannam",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    },
+                    {
+                        "ten": "hongtham",
+                        "tuoi": 20,
+                        "gioitinh": "nu"
+                    },
+                    {
+                        "ten": "vandau",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    }
+                    ]
+                },
+                {"ketoan": [
+                    {
+                        "ten": "vannam",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    },
+                    {
+                        "ten": "hongtham",
+                        "tuoi": 20,
+                        "gioitinh": "nu"
+                    },
+                    {
+                        "ten": "vandau",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    }
+                    ]
+                },
+                {"hanhchinh": [
+                    {
+                        "ten": "vannam",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    },
+                    {
+                        "ten": "hongtham",
+                        "tuoi": 20,
+                        "gioitinh": "nu"
+                    },
+                    {
+                        "ten": "vandau",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    }
+                    ]
+                },
+        ]
+        
+            document.write(`<table border="5">
+                            <tr>
+                                <th>ten</th>
+                                <th>tuoi</th>
+                                <th>gioitinh</th>
+                            </tr>`)
+        for(nv of congty[0].tochuc){
+            document.write(`<tr>
+                                <td>${nv.ten}</td>
+                                <td>${nv.tuoi}</td>
+                                <td>${nv.gioitinh}</td>
+                            </tr> `)
+                        }
+            document.write(`</table>`)
+            document.write(`<table border="5">
+                            <tr>
+                                <th>ten</th>
+                                <th>tuoi</th>
+                                <th>gioitinh</th>
+                            </tr>`)
+        for(nv of congty[1].ketoan){
+            document.write(`<tr>
+                                <td>${nv.ten}</td>
+                                <td>${nv.tuoi}</td>
+                                <td>${nv.gioitinh}</td>
+                            </tr> `)
+                        }
+            document.write(`</table>`)
+        for(phongban of congty){
+            tenpb = Object.keys(phongban)[0]
+            document.write(`<table border="5">
+                            <caption>${tenpb}</caption>
+                            <tr>
+                                <th>ten</th>
+                                <th>tuoi</th>
+                                <th>gioi tinh</th>
+                            </tr> `)
+            for(nv of phongban[tenpb]){
+                document.write(`<tr>
+                                <td>${nv.ten}</td>
+                                <td>${nv.tuoi}</td>
+                                <td>${nv.gioitinh}</td>
+                            </tr> `)
+            }
+            document.write(`</table>`)            
+            }
+            
+        
+        // for(i in congty){
+        //     console.log(congty[i].tochuc[i], congty[i].ketoan[i])
+        // }
+        // var i=0
+        // do {
+        //     console.log(congty[i].tochuc[i])
+        //     i++
+        // }while(i<congty.length)
+        // function elm(ct) {
+        //     console.log(ct)
+        // }
+        // congty.forEach(elm)
+        // console.log(congty[0].tochuc[1])
+        var tochuc = [
+                    {
+                        "ten": "vannam",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    },
+                    {
+                        "ten": "hongtham",
+                        "tuoi": 20,
+                        "gioitinh": "nu"
+                    },
+                    {
+                        "ten": "vandau",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    }
+                ];
+        var ketoan = [
+                    {
+                        "ten": "vannam",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    },
+                    {
+                        "ten": "hongtham",
+                        "tuoi": 20,
+                        "gioitinh": "nu"
+                    },
+                    {
+                        "ten": "vandau",
+                        "tuoi": 19,
+                        "gioitinh": "nam"
+                    }
+                ];
+        var congty1 = [tochuc, ketoan];
+        for(phongban of congty){
+            tenpb = Object.keys(congty)[0]
+            document.write(`<table border="5">
+                <caption>${tenpb}</caption>
+                            <tr>
+                                <th>ten</th>
+                                <th>tuoi</th>
+                                <th>gioi tinh</th>
+                            </tr> `)
+        }
+        // console.log(congty1)  
+
+
+    // </script>
+    // <sinhvien>
+    //     <masv id="name">123</masv>
+    //     <tensv>ITC</tensv>
+    // </sinhvien>
+    // <script>
+    //     var danhsach = [
+    //         {   "tensv": "SJC",
+    //             "tuoi": 19,
+    //             "email": "hihi@gmail.com"
+    //         },
+    //         {   "tensv": "jsc",
+    //             "tuoi": 20,
+    //             "email": "haha@gmail.com"
+    //         },
+    //         {   "tensv": "huhu",
+    //             "tuoi": 21,
+    //             "email": "huhu@gmail.com"
+    //         },
+    //     ];
+    //     for(nv of danhsach){
+    //         document.write(`${nv.tensv}`)
+    //     }
+    //     document.write(`<table border="5">
+    //                         <tr>
+    //                             <th>ten</th>
+    //                             <th>tuoi</th>
+    //                             <th>email</th>
+    //                         </tr>
+    //                         var i=0
+    //                         do { 
+    //                             <tr>
+    //                                 <td>${danhsach[i].tensv}</td>
+    //                                 <td>${danhsach[i].tuoi}</td>
+    //                                 <td>${danhsach[i].email}</td>
+    //                             </tr>  
+    //                             i++
+    //                         }while(i<danhsach.length);
+    //                     </table>`);
+        // var i=0
+        // do {
+        //     document.write(`<table border="5">
+                           
+        //                     <tr>
+        //                         <td>${danhsach[i].tensv}</td>
+        //                         <td>${danhsach[i].tuoi}</td>
+        //                         <td>${danhsach[i].email}</td>
+        //                     </tr>
+        //                 </table>`);
+        //     i++
+        // }while(i<danhsach.length);
+        // document.write(`<table border="5">
+        //                     <tr>
+        //                         <th>ten</th>
+        //                         <th>tuoi</th>
+        //                         <th>email</th>
+        //                     </tr>
+        //                 </table>`);
+    // </script>
+    <caption></caption>
+</body>
+
+</html>

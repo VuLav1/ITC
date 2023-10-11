@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+        integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="./angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div class="card-header">
+        <h3 style="text-align: center;" class="text-primary">TÍNH TIỀN THƯỞNG TẾT NGUYÊN ĐÁN</h3>
+    </div>
+    <div class="container" ng-controller="lab8Ctrl">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form action="" name="frmlab8">
+                    <div class="mb-3">
+                        <label for="">Họ và tên</label>
+                        <input type="text" name="txtten" maxlength="20" id="" ng-model="ten" class="form-control" placeholder=""
+                            aria-describedby="helpId" required>
+                        <small ng-show="frmlab8.txtten.$invalid" id="helpId" style="padding: 5px;border-radius: 5px; background-color: rgb(237, 167, 167);" class="text-danger">Bạn chưa nhập họ
+                            tên</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Lương</label>
+                        <input type="number" name="txtluong" min="2000000" ng-model="luong" id="" class="form-control"
+                            placeholder="" aria-describedby="helpId" required>
+                        <small style="padding: 5px;border-radius: 5px; background-color: rgb(237, 167, 167);" ng-show="frmlab8.txtluong.$invalid" id="helpId" class="text-danger">Bạn phải nhập lương
+                            trên 2 triệu</small>
+                    </div>
+                    <label for="">Giới tính</label><br>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label"></label>
+                        <input class="form-check-input" type="radio" ng-model="phai" id="" value="Nam">Nam
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label"></label>
+                        <input class="form-check-input" type="radio" ng-model="phai" id="" value="Nữ">Nữ
+                    </div>
+
+                    <div class="mb-3 mt-2">
+                        <label for="" class="form-label">Độ tuổi</label>
+                        <select class="form-control" ng-model="chontuoi"
+                            ng-options="item as item.tuoi for item in listTuoi" name="" id=""></select>
+                    </div>
+                    <h4>Tiền thưởng</h4>
+                    <div style="border-radius: 5px;" class="card-footer bg-primary"><h3>{{tinhThuong()}}</h3></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = angular.module('myApp', [])
+        app.controller('lab8Ctrl', function ($scope) {
+            $scope.listTuoi = [
+                {
+                    tuoi: 'Dưới 25 tuổi',
+                    thuong: 0.07
+                },
+                {
+                    tuoi: 'Từ 25 đến 40',
+                    thuong: 0.1
+                },
+                {
+                    tuoi: 'Trên 40 tuổi',
+                    thuong: 0.15
+                }
+            ]
+            $scope.chontuoi = $scope.listTuoi[0]
+            $scope.tinhThuong = () => {
+                var sum = $scope.luong * $scope.chontuoi.thuong
+                if ($scope.phai == 'Nữ')
+                    sum += 200000
+                return sum
+            }
+
+        })
+    </script>
+</body>
+
+</html>

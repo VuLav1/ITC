@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+        integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
+        integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="./angular.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card" ng-app="myApp" ng-controller="lab3Ctrl">
+                    <div class="card-header">
+                        <h4><caption>Trình tính tiền thuê máy dịc vụ Internet</caption></h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                          <label for="" class="form-label">Thời gian bắt đầu 6h :</label>
+                          <input type="text" name="" ng-model="GBD" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                          <small id="helpId" ng-bind="msg()" class="text-danger" ></small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Giờ kết thúc 21h :</label>
+                            <input type="text" name="" ng-model="GKT" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                            <small id="helpId" ng-bind="msg" class="text-danger" ></small>
+                          </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p>{{tinh()}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = angular.module('myApp', [])
+        app.controller('lab3Ctrl', function($scope){
+            $scope.GBD = 0;
+            $scope.GKT = 0;
+            $scope.tinh = function () {
+                var bd = parseInt($scope.GBD);
+                var kt = parseInt($scope.GKT);
+                if((bd>=6 && bd<kt) && (kt>6 && kt<=21)){
+                    $scope.msg="";
+                    return $scope.tinhTien(bd,kt);
+                }
+                else{
+                    $scope.msg="Bạn phải nhập thời gian từ 6 giờ đến 21 giờ.";
+                }
+            }
+            $scope.tinhTien = (bd,kt) => {
+                var kq=0;
+                if(kt<=17){
+                    kq=(kt-bd)*2500;
+                }
+                else{
+                    if(bd>17)
+                        kq=(kt-bd)*3000
+                    else
+                        kq=(((17-bd)*2500) + ((kt-17)*3000));
+                }
+                return kq;
+            }
+        })
+    </script>
+</body>
+</html>
